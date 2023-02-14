@@ -1,5 +1,20 @@
 import { AxiosRequestConfig } from 'axios';
 
+export type AppParams = {
+  /**
+   * API host
+   */
+  url: string;
+  /**
+   * App access token
+   */
+  accessToken: string;
+  /**
+   * Optional: axiosOptions (https://github.com/axios/axios#request-config)
+   */
+  axiosOptions?: AxiosRequestConfig;
+}
+
 export type ClientParams = {
   /**
    * API host

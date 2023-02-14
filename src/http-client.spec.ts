@@ -1,7 +1,7 @@
 import axios from 'axios';
-import createHttpClient from './http-client';
+import {createAppHttpClient, createConnectionHttpClient} from "./http-client";
 
-const mockParams = {
+const mockConnectionParams = {
   url: 'https://mockdata.com',
   username: 'username',
   password: 'password',
@@ -9,15 +9,25 @@ const mockParams = {
   secret: 'secret',
 };
 
+const mockAppParams = {
+  url: 'https://mockdata.com',
+  accessToken: 'token',
+};
+
 describe('http client', () => {
-  test('Create Axios client', async () => {
-    const http = createHttpClient(mockParams);
+  test('Create Axios connection client', async () => {
+    const http = createConnectionHttpClient(mockConnectionParams);
     expect(http).toBeDefined();
   });
 
-  test('Create Axios client + request', async () => {
+  test('Create Axios app client', async () => {
+    const http = createAppHttpClient(mockAppParams);
+    expect(http).toBeDefined();
+  });
+
+  test('Create Axios connection client + request', async () => {
     jest.spyOn(axios, 'post');
-    const http = createHttpClient(mockParams);
+    const http = createConnectionHttpClient(mockConnectionParams);
     try {
       await http.get('test');
       // eslint-disable-next-line no-empty

@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import qs from 'qs';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import { ClientParams } from './types';
+import { AppParams, ClientParams } from './types';
 
 const TOKEN_PATH = '/api/oauth/v1/token';
 
@@ -25,7 +25,7 @@ const defaultConfig = {
  * @param {ClientParams} options - Initialization parameters for the HTTP client
  * @return {AxiosInstance} Initialized axios instance
  */
-const createHttpClient = (options: ClientParams): AxiosInstance => {
+export const createConnectionHttpClient = (options: ClientParams): AxiosInstance => {
   let accessToken = '';
   const { url, clientId, secret, username, password } = options;
 
@@ -82,4 +82,30 @@ const createHttpClient = (options: ClientParams): AxiosInstance => {
   return instance;
 };
 
-export default createHttpClient;
+/**
+ * Create pre-configured axios instance
+ * @private
+ * @param {ClientParams} options - Initialization parameters for the HTTP client
+ * @return {AxiosInstance} Initialized axios instance
+ */
+export const createAppHttpClient = (options: AppParams): AxiosInstance => {
+  const { url, accessToken } = options;
+
+  const baseURL = url.replace(/\/+$/, '');
+
+  const instance = axios.create({
+    ...defaultConfig,
+    ...(options.axiosOptions || {}),
+    baseURL,
+  }) as AxiosInstance;
+
+  instance.interceptors.request.use(async (config) => ({
+    ...config,
+    headers: {
+      ...config.headers,
+      Authorization: `Bearer ${accessToken}`,
+    },
+  }));
+
+  return instance;
+};

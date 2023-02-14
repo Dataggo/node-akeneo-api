@@ -194,6 +194,6 @@ export const createAppClient = (params: AppParams) => {
   return getHttpClientWithEndpoint(http);
 };
 
-export type AkeneoClientAPI = ReturnType<typeof createClient>;
+export type AkeneoClientAPI = ReturnType<typeof getHttpClientWithEndpoint>;
 
 export * from './types';

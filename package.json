@@ -1,8 +1,8 @@
 {
-  "name": "@dataggo/akeneo-api",
-  "version": "1.0.2",
+  "name": "@dataggo/node-akeneo-api",
+  "version": "1.0.0",
   "description": "A Node Rest Client for the Akeneo PIM",
-  "author": "Jens Verbeken <jens.verbeken@craftzing.com>",
+  "author": "Constant B <contact@dataggo>",
   "license": "MIT",
   "types": "dist/cjs/index.d.ts",
   "exports": {

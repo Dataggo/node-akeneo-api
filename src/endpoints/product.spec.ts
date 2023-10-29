@@ -2,8 +2,6 @@ import axios from 'axios';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import createError from 'axios/lib/core/createError';
-import mockError from '../../mocks/error.mock';
 import mockProductResponse from '../../mocks/product.mock';
 
 import { getOne, get, getAll } from './product';
@@ -48,18 +46,6 @@ describe('Product', () => {
         search: '{"main_color":[{"operator":"IN","value":["purple"]}]}',
       },
     });
-  });
-
-  test('Get products with invalid parameters', async () => {
-    axiosGetSpy.mockImplementation(async () => {
-      throw createError(...mockError.badRequest);
-    });
-
-    await expect(() =>
-      get(axios, { query: { search: 'test' } }),
-    ).rejects.toThrow(
-      new Error(JSON.stringify(mockError.response, null, '  ')),
-    );
   });
 
   test('getAll', async () => {

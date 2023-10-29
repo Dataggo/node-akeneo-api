@@ -25,9 +25,9 @@
     "publish": "npm publish --access public"
   },
   "dependencies": {
-    "axios": "1.6.0",
+    "axios": "^1.6.0",
     "qs": "^6.9.6",
-    "ramda": "0.27.2"
+    "ramda": "^0.27.1"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
@@ -70,6 +70,9 @@
       "src/**/*.(t|j)s"
     ],
     "coverageDirectory": "coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "axios": "axios/dist/node/axios.cjs"
+    }
   }
 }

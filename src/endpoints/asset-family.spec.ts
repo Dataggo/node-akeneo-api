@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import mockResponse from '../../mocks/asset-family.mock';
 
 import {

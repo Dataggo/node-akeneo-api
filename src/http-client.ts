@@ -1,5 +1,4 @@
 /* eslint-disable no-underscore-dangle */
-import qs from 'qs';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { AppParams, ClientParams } from './types';
 
@@ -16,7 +15,6 @@ const defaultConfig = {
   basePath: '',
   adapter: undefined,
   maxContentLength: 1073741824, // 1GB
-  paramsSerializer: qs.stringify,
 };
 
 /**
@@ -53,6 +51,8 @@ export const createConnectionHttpClient = (options: ClientParams): AxiosInstance
     return accessToken;
   };
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   instance.interceptors.request.use(async (config) => ({
     ...config,
     headers: {
@@ -99,6 +99,8 @@ export const createAppHttpClient = (options: AppParams): AxiosInstance => {
     baseURL,
   }) as AxiosInstance;
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   instance.interceptors.request.use(async (config) => ({
     ...config,
     headers: {

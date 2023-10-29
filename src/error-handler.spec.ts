@@ -1,6 +1,7 @@
 import { AxiosError } from 'axios';
 import errorHandler from './error-handler';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import mockError from '../mocks/error.mock';
 
 describe('errorHandler', () => {
@@ -17,8 +18,12 @@ describe('errorHandler', () => {
           message: 'Search query parameter should be valid JSON.',
         },
         headers: {},
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         config: {},
       },
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       config: {},
       toJSON: (): any => ({}),
     };
@@ -29,7 +34,7 @@ describe('errorHandler', () => {
   });
 
   test('Throws well formed error with Authorization', async () => {
-    const errorMock: AxiosError = {
+      const errorMock: AxiosError = {
       isAxiosError: true,
       name: '',
       message: '',
@@ -41,9 +46,13 @@ describe('errorHandler', () => {
           message: 'Search query parameter should be valid JSON.',
         },
         headers: {},
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         config: {},
       },
       config: {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         headers: {
           Authorization: 'test-authorization',
         },

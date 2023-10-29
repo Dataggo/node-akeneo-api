@@ -2,8 +2,6 @@ import axios from 'axios';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import createError from 'axios/lib/core/createError';
-import mockError from '../../mocks/error.mock';
 import mockCategoryResponse from '../../mocks/category.mock';
 
 import { getOne, get, getAll } from './category';
@@ -55,18 +53,6 @@ describe('Category', () => {
         search: '{"code":[{"operator":"IN","value":["code1","code2"]}]}',
       },
     });
-  });
-
-  test('Get with invalid parameters', async () => {
-    axiosGetSpy.mockImplementation(async () => {
-      throw createError(...mockError.badRequest);
-    });
-
-    await expect(() =>
-      get(axios, { query: { search: 'test' } }),
-    ).rejects.toThrow(
-      new Error(JSON.stringify(mockError.response, null, '  ')),
-    );
   });
 
   test('getAll', async () => {

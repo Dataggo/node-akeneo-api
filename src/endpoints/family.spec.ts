@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import mockFamilyResponse from '../../mocks/family.mock';
 
 import { get, getVariants } from './family';

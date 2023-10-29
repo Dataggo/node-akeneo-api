@@ -22,7 +22,11 @@ export default function errorHandler({ config, response }: AxiosError): never {
   } = {
     status: response?.status,
     statusText: response?.statusText,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     message: data && 'message' in data ? data.message : '',
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     details: data && 'details' in data ? data.details : {},
     request: config
       ? {

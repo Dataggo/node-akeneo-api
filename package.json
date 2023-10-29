@@ -1,6 +1,6 @@
 {
   "name": "@dataggo/node-akeneo-api",
-  "version": "1.0.4",
+  "version": "1.0.11",
   "description": "A Node Rest Client for the Akeneo PIM",
   "author": "Constant B <contact@dataggo>",
   "license": "MIT",
@@ -25,9 +25,9 @@
     "publish": "npm publish --access public"
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "1.6.0",
     "qs": "^6.9.6",
-    "ramda": "^0.27.1"
+    "ramda": "0.27.2"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
@@ -48,7 +48,7 @@
     "jest-html-reporters": "^2.1.2",
     "prettier": "^2.2.1",
     "ts-jest": "^26.5.2",
-    "typedoc": "^0.20.19",
+    "typedoc": "^0.25.2",
     "typescript": "^4.1.3"
   },
   "jest": {

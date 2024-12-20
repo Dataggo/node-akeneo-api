@@ -184,6 +184,15 @@ export type Variant = {
   labels: Record<string, any>;
 };
 
+export type AttributeTableConfiguration = {
+  code: string;
+  data_type: string;
+  labels: Record<string, string>;
+  validations: Record<string, any>;
+  is_required_for_completeness: boolean;
+  default_value: any | null;
+}
+
 export type Attribute = {
   code: string;
   type: string;
@@ -211,6 +220,7 @@ export type Attribute = {
   allowed_extensions: string[];
   max_file_size: string;
   reference_data_name: string;
+  table_configuration?: AttributeTableConfiguration[];
   default_value: boolean;
 };
 

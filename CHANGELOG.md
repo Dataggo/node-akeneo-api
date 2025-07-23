@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.2] - 2025-07-23
+- Fix category getAll search query parameter
+
 ## [1.2.1] - 2024-12-20
 - Get update from fork 1.0.12
 - Add table_configuration for Attribute type

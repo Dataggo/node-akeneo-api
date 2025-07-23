@@ -40,5 +40,7 @@ export const getAll = (
   params: { query?: CategoryQueryParameters },
 ): Promise<ListResponse<Category>> =>
   raw.getAllByPage(http, `/api/rest/v1/categories`, {
-    params,
+    params: {
+      ...params.query,
+    },
   });

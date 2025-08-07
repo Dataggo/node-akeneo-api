@@ -155,6 +155,9 @@ const getHttpClientWithEndpoint = (http: AxiosInstance) => ({
     get: wrap(http, endpoints.family.get),
     getVariants: wrap(http, endpoints.family.getVariants),
   },
+  measurementFamily: {
+    getAll: wrap(http, endpoints.measurementFamily.getAll),
+  }
 })
 
 /**

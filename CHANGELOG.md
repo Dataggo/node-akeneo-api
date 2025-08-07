@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2025-08-05
+- Add support of measurement families
+
 ## [1.2.2] - 2025-07-23
 - Fix category getAll search query parameter
 

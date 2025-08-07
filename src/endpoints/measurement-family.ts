@@ -10,6 +10,6 @@ import raw from './raw';
 export const getAll = (
   http: AxiosInstance
 ): Promise<ListResponse<MeasurementFamily>> =>
-  raw.get(http, `/api/rest/v1/measurement-families`, {
+  raw.getAllNoPagination(http, `/api/rest/v1/measurement-families`, {
     params: {},
   });

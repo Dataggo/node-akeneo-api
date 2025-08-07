@@ -28,6 +28,24 @@ export default {
         };
       }, errorHandler);
   },
+  getAllNoPagination: function getAllNoPagination(
+    http: AxiosInstance,
+    url: string,
+    config: AxiosRequestConfig,
+  ): Promise<
+    ListResponse<any>
+  > {
+    return http
+      .get(url, {
+        ...config,
+      })
+      .then((response) => {
+        const { data } = response;
+        return {
+          items: data,
+        };
+      }, errorHandler);
+  },
   getOne: function getOne(
     http: AxiosInstance,
     url: string,

@@ -275,3 +275,18 @@ export type Asset = {
   code: string;
   values: Record<string, ValuesRecord[]>;
 };
+
+export type MeasurementFamily = {
+  code: string;
+  labels: Record<string, string>;
+  standard_unit_code: string;
+  units: Record<string, {
+    code: string;
+    labels: Record<string, string>;
+    convert_from_standard?: Record<string, {
+      operator: string;
+      value: string;
+    }>,
+    symbol: string
+  }>;
+}

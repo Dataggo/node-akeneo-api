@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2025-11-06
+- Add parameter `with_table_select_options` to attribute GET requests
+
 ## [1.3.1] - 2025-08-05
 - Fix measurement families
 

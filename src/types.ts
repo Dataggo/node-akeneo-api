@@ -81,6 +81,7 @@ export type AttributeQueryParameters = {
   search?: string;
   page?: number;
   limit?: number;
+  with_table_select_options?: boolean;
   with_count?: boolean;
 };
 export type AttributeOptionQueryParameters = {

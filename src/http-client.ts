@@ -37,18 +37,32 @@ export const createConnectionHttpClient = (options: ClientParams): AxiosInstance
   const base64Encoded = Buffer.from(`${clientId}:${secret}`).toString('base64');
 
   const refreshAccessToken = async () => {
-    const tokenResult = await axios.post(
-      `${baseURL}${TOKEN_PATH}`,
-      { grant_type: 'password', username, password },
-      {
-        headers: {
-          Authorization: `Basic ${base64Encoded}`,
-        },
-      },
-    );
+    const maxRetries = 3;
 
-    accessToken = tokenResult.data.access_token;
-    return accessToken;
+    for (let attempt = 0; attempt <= maxRetries; attempt += 1) {
+      try {
+        // eslint-disable-next-line no-await-in-loop
+        const tokenResult = await axios.post(
+          `${baseURL}${TOKEN_PATH}`,
+          { grant_type: 'password', username, password },
+          {
+            headers: {
+              Authorization: `Basic ${base64Encoded}`,
+            },
+            timeout: 30000,
+          },
+        );
+
+        accessToken = tokenResult.data.access_token;
+        return accessToken;
+      } catch (error) {
+        if (attempt === maxRetries) throw error;
+        // eslint-disable-next-line no-await-in-loop
+        await new Promise((resolve) => setTimeout(resolve, 200 * (2 ** attempt)));
+      }
+    }
+
+    throw new Error('Failed to refresh access token');
   };
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
